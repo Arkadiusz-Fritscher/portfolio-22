@@ -31,6 +31,7 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     '@nuxt/postcss8',
+    'nuxt-gsap-module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -58,5 +59,12 @@ export default {
 
   router: {
     linkExactActiveClass: 'link--active',
+  },
+
+  // @nuxt/gsap Module config: https://www.npmjs.com/package/nuxt-gsap-module
+  gsap: {
+    extraPlugins: {
+      scrollTrigger: true,
+    },
   },
 }

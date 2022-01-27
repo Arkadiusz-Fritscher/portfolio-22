@@ -1,5 +1,32 @@
 <script>
-export default {}
+export default {
+  mounted() {
+    this.heroAnimation()
+  },
+
+  methods: {
+    heroAnimation() {
+      const tl = this.$gsap.timeline({ defaults: { ease: 'power2.out' } })
+
+      tl.from('.hero__title__case span', {
+        yPercent: 108,
+        stagger: 0.2,
+        duration: 0.8,
+        delay: 0.4,
+      })
+
+      tl.from(
+        this.$refs.heroSubtitle,
+        {
+          yPercent: 100,
+          autoAlpha: 0,
+          duration: 0.4,
+        },
+        '-=0.3'
+      )
+    },
+  },
+}
 </script>
 
 <template>
@@ -33,12 +60,17 @@ export default {}
 
       <!-- Title -->
       <h1 class="flex flex-col w-full text-3xl">
-        <span class="hero__title">Frontend</span>
-        <span class="hero__title ml-auto">Developer</span>
+        <span class="hero__title__case">
+          <span class="hero__title--first">Frontend</span>
+        </span>
+        <span class="hero__title__case ml-auto pb-[0.16em]">
+          <span class="hero__title--first">Developer</span>
+        </span>
       </h1>
 
       <!-- Subtitle -->
       <div
+        ref="heroSubtitle"
         class="text-lg sm:text-xl flex items-center absolute right-0 top-[116%] gap-x-[0.1em]"
       >
         <span>with an</span>
@@ -49,4 +81,13 @@ export default {}
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+.hero__title__case {
+  overflow-y: clip;
+  display: block;
+}
+
+.hero__title__case span {
+  display: block;
+}
+</style>
