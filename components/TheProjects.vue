@@ -72,13 +72,6 @@ export default {
 </template>
 
 <style scoped>
-.star {
-  display: block;
-  width: var(--af-text-lg);
-  max-height: max-content;
-  padding-top: 0.4em;
-}
-
 .project--subtitle {
   margin-bottom: var(--af-space-4-y);
 }

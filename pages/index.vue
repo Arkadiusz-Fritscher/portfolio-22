@@ -4,12 +4,12 @@ export default {}
 </script>
 
 <template>
-  <section class="--vh relative">
+  <section class="relative">
     <TheHeader />
     <SectionTitle title="Projects" />
     <TheProjects />
     <SectionTitle title="About" />
-    <section id="about" class="--vh">This is the about page</section>
+    <TheAbout />
     <ContactAside />
   </section>
 </template>

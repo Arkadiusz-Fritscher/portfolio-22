@@ -17,36 +17,38 @@ export default {
   },
 
   mounted() {
-    this.closeEyeOnHover()
-    this.randomEyeClose()
-    this.init()
+    if (window.matchMedia('(any-hover: hover)').matches) {
+      this.closeEyeOnHover()
+      this.init()
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.addEventListener('mousemove', this.eyeFollowMouse)
+            window.addEventListener('resize', this.onResize)
+            document
+              .querySelector('.eye__outer')
+              .addEventListener('mouseenter', this.closeEyeOnHover)
 
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          document.addEventListener('mousemove', this.eyeFollowMouse)
-          window.addEventListener('resize', this.onResize)
-          document
-            .querySelector('.eye__outer')
-            .addEventListener('mouseenter', this.closeEyeOnHover)
+            document
+              .querySelector('.eye__outer')
+              .addEventListener('mouseleave', this.openEyeOnLeave)
 
-          document
-            .querySelector('.eye__outer')
-            .addEventListener('mouseleave', this.openEyeOnLeave)
-
-          document.addEventListener('scroll', this.init)
-        } else {
-          document.removeEventListener('mousemove', this.eyeFollowMouse)
-          window.removeEventListener('resize', this.onResize)
-          document.removeEventListener('mouseleave', this.openEyeOnLeave)
-          document.removeEventListener('mouseenter', this.closeEyeOnHover)
-          document.removeEventListener('scroll', this.init)
-          clearTimeout(this.randomEyeClose)
-        }
+            document.addEventListener('scroll', this.init)
+          } else {
+            document.removeEventListener('mousemove', this.eyeFollowMouse)
+            window.removeEventListener('resize', this.onResize)
+            document.removeEventListener('mouseleave', this.openEyeOnLeave)
+            document.removeEventListener('mouseenter', this.closeEyeOnHover)
+            document.removeEventListener('scroll', this.init)
+            clearTimeout(this.randomEyeClose)
+          }
+        })
       })
-    })
 
-    observer.observe(document.querySelector('#hero'))
+      observer.observe(document.querySelector('#hero'))
+    }
+
+    this.randomEyeClose()
   },
 
   methods: {

@@ -11,18 +11,19 @@ export default {
 
   mounted() {
     this.heroAnimation()
-
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          document.addEventListener('scroll', this.spinFaster, false)
-        } else {
-          document.removeEventListener('scroll', this.spinFaster)
-        }
+    if (window.matchMedia('(any-hover: hover)').matches) {
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.addEventListener('scroll', this.spinFaster, false)
+          } else {
+            document.removeEventListener('scroll', this.spinFaster)
+          }
+        })
       })
-    })
 
-    observer.observe(document.querySelector('#hero'))
+      observer.observe(document.querySelector('#hero'))
+    }
   },
 
   methods: {
@@ -219,7 +220,7 @@ export default {
 <style scoped>
 .hero__title__case,
 .hero__subtitle__case {
-  overflow-y: clip;
+  overflow-y: hidden;
   display: block;
 }
 

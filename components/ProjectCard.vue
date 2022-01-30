@@ -168,7 +168,7 @@ export default {
 
   .project--card {
     display: grid;
-    grid-template-columns: 1fr 1fr 29.16665% 29.16665%;
+    grid-template-columns: 1fr repeat(3, 23.333%);
     grid-template-rows: max-content max-content 1fr;
     gap: 0px 0px;
   }

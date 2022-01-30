@@ -1,7 +1,7 @@
 <template>
   <div
     ref="sectionTitleWrapper"
-    class="section-title overflow-x-clip pointer-events-none"
+    class="section-title overflow-x-hidden pointer-events-none"
   >
     <ul ref="sectionTitle" class="text-display flex gap-x-[0.3em] font-serif">
       <li v-for="i in 3" :key="i">

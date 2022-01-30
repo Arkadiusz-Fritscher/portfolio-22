@@ -39,14 +39,20 @@ body {
   background-color: var(--af-color-chefs-hat);
   color: var(--af-color-tristesse);
   font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
-html,
+/* html,
 body,
 #__nuxt,
 #__layout {
-  height: 100%;
-  min-height: 100%;
+  height: calc(100vh - calc(100vh - 100%));
+} */
+
+.--vh {
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 * {
@@ -57,12 +63,8 @@ body,
   width: 100%;
   max-width: var(--max-width);
   margin-inline: auto;
-  padding-inline: var(--external-gutter);
-}
-
-.--vh {
-  height: 100%;
-  min-height: 100%;
+  /* padding-inline: var(--external-gutter); */
+  padding-inline: 5%;
 }
 
 .section--grid {
@@ -72,8 +74,29 @@ body,
   column-gap: var(--grid-col-gap);
 }
 
+.space--left {
+  flex: 1;
+}
+
+.space--right {
+  flex: 1;
+}
+
+.star {
+  display: block;
+  width: var(--af-text-lg);
+  max-height: max-content;
+  padding-top: 0.4em;
+}
+
 @media screen(sm) {
   :root {
     --eye-size: calc(var(--af-text-xl) * 1.6);
+  }
+}
+
+@media screen(tablet) {
+  .space--right {
+    flex: 0 1 70%;
   }
 }
