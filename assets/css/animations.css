@@ -1,0 +1,35 @@
+.link--hover {
+  position: relative;
+}
+
+.link--hover::before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.0625rem;
+  transform: scaleX(0);
+  transform-origin: right center;
+  background-color: currentColor;
+  transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.link--hover:hover::before {
+  transform: scaleX(1);
+  transition-delay: 0.2s;
+  transform-origin: left center;
+
+  /* content: '';
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    right: 0;
+    height: 0.0625rem;
+    transform: scaleX(0);
+    transform-origin: left center;
+    background-color: currentColor;
+    transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1); */
+}

@@ -1,10 +1,29 @@
+<script>
+export default {
+  mounted() {
+    this.animateNavbar()
+  },
+
+  methods: {
+    animateNavbar() {
+      this.$gsap.from('[data-element=nav__menu] li', {
+        yPercent: 100,
+        autoAlpha: 0,
+        stagger: 0.1,
+        delay: 0.8,
+      })
+    },
+  },
+}
+</script>
+
 <template>
   <nav class="fixed top-0 inset-x-0 z-30">
     <div class="wrapper h-16 flex items-center justify-between">
       <a href="#hero">Logo</a>
 
       <!-- Tablet / Desktop Navigation -->
-      <ul class="hidden sm:flex">
+      <ul class="hidden sm:flex" data-element="nav__menu">
         <li>
           <nuxt-link class="nav__link" to="#projects">Projects</nuxt-link>
         </li>

@@ -18,7 +18,7 @@
   --af-color-chefs-hat: #f3f3f5;
 
   --af-text-caption: clamp(0.625rem, 0.585rem + 0.165vw, 0.75rem);
-  --af-text-sm: clamp(0.75rem, 0.71rem + 0.165vw, 0.875rem);
+  --af-text-sm: clamp(0.75rem, 0.669rem + 0.331vw, 1rem);
   --af-text-base: clamp(1rem, 0.919rem + 0.331vw, 1.25rem);
   --af-text-lg: clamp(1.125rem, 0.762rem + 1.488vw, 2.25rem);
   --af-text-xl: clamp(2.25rem, 1.525rem + 2.975vw, 4.5rem);
@@ -47,6 +47,10 @@ body,
 #__layout {
   height: 100%;
   min-height: 100%;
+}
+
+* {
+  scroll-behavior: smooth;
 }
 
 .wrapper {

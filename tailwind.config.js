@@ -27,11 +27,11 @@ module.exports = {
       ],
       sm: [
         'var(--af-text-sm)',
-        { letterSpacing: '0.2rem', lineHeight: '100%' },
+        { letterSpacing: '0.025rem', lineHeight: '100%' },
       ],
       base: [
         'var(--af-text-base)',
-        { letterSpacing: '0.1em', lineHeight: '150%' },
+        { letterSpacing: '0.02em', lineHeight: '150%' },
       ],
       lg: [
         'var(--af-text-lg)',
@@ -43,7 +43,7 @@ module.exports = {
       ],
       '2xl': [
         'var(--af-text-2xl)',
-        { letterSpacing: '-0.1em', lineHeight: '130%' },
+        { letterSpacing: '-0.025em', lineHeight: '106%' },
       ],
       '3xl': [
         'var(--af-text-3xl)',

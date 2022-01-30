@@ -1,30 +1,127 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      minX: 34,
+      maxX: 66,
+      minY: 44,
+      maxY: 55,
+      xPos: 50,
+      yPos: 50,
+    }
   },
 
-  // beforeMount() {
-  //   this.vw = document.documentElement.clientWidth
-  //   this.vh = document.documentElement.clientHeight
-  // },
+  beforeMount() {
+    this.vw = document.documentElement.clientWidth
+    this.vh = document.documentElement.clientHeight
+  },
 
-  // mounted() {
-  //   document.addEventListener('mousemove', (event) => {
-  //     this.x = Math.round((event.x * 100) / this.vw)
-  //     this.y = Math.round((event.y * 100) / this.vh)
-  //   })
+  mounted() {
+    this.closeEyeOnHover()
+    this.randomEyeClose()
+    this.init()
 
-  //   window.addEventListener('resize', (e) => {
-  //     this.vw = e.target.innerWidth
-  //     this.vh = e.target.innerHeight
-  //   })
-  // },
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          document.addEventListener('mousemove', this.eyeFollowMouse)
+          window.addEventListener('resize', this.onResize)
+          document
+            .querySelector('.eye__outer')
+            .addEventListener('mouseenter', this.closeEyeOnHover)
+
+          document
+            .querySelector('.eye__outer')
+            .addEventListener('mouseleave', this.openEyeOnLeave)
+
+          document.addEventListener('scroll', this.init)
+        } else {
+          document.removeEventListener('mousemove', this.eyeFollowMouse)
+          window.removeEventListener('resize', this.onResize)
+          document.removeEventListener('mouseleave', this.openEyeOnLeave)
+          document.removeEventListener('mouseenter', this.closeEyeOnHover)
+          document.removeEventListener('scroll', this.init)
+          clearTimeout(this.randomEyeClose)
+        }
+      })
+    })
+
+    observer.observe(document.querySelector('#hero'))
+  },
+
+  methods: {
+    init() {
+      const eye = document.querySelector('.eye__inner').getBoundingClientRect()
+      this.eyePosX = eye.x
+      this.eyePosY = eye.y
+    },
+
+    onResize(e) {
+      this.vw = e.target.innerWidth
+      this.vh = e.target.innerHeight
+
+      this.eyePosX = document
+        .querySelector('.eye__inner')
+        .getBoundingClientRect().x
+
+      this.eyePosY = document
+        .querySelector('.eye__inner')
+        .getBoundingClientRect().y
+    },
+
+    eyeFollowMouse(event) {
+      this.eyeXPercent = this.eyePosX / this.vw
+      this.eyeYPercent = this.eyePosY / this.vh
+      this.x = Math.round((event.x * 50) / (this.vw * this.eyeXPercent))
+      this.y = Math.round((event.y * 50) / (this.vh * this.eyeYPercent))
+
+      if (this.x < this.minX) {
+        this.xPos = this.minX
+      } else if (this.x > this.maxX) {
+        this.xPos = this.maxX
+      } else {
+        this.xPos = this.x
+      }
+
+      if (this.y < this.minY) {
+        this.yPos = this.minY
+      } else if (this.y > this.maxY) {
+        this.yPos = this.maxY
+      } else {
+        this.yPos = this.y
+      }
+
+      document.querySelector('.eye__inner').style.left = this.xPos + '%'
+      document.querySelector('.eye__inner').style.top = this.yPos + '%'
+    },
+
+    closeEyeOnHover() {
+      document.querySelector('.eyelid').classList.add('eyelid--close')
+    },
+
+    openEyeOnLeave() {
+      document.querySelector('.eyelid').classList.remove('eyelid--close')
+    },
+
+    randomEyeClose() {
+      const min = 5
+      const max = 10
+      const rand = Math.floor(Math.random() * (max - min + 1) + min) // Generate Random number between 5 - 10
+
+      document.querySelector('.eyelid').classList.add('eyelid--close')
+      setTimeout(() => {
+        document.querySelector('.eyelid').classList.remove('eyelid--close')
+      }, 200)
+
+      setTimeout(this.randomEyeClose, rand * 1000)
+    },
+  },
 }
 </script>
 
 <template>
   <span class="eye__outer">
+    <span class="eyelid"></span>
     <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         fill-rule="evenodd"
@@ -61,14 +158,27 @@ export default {
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  z-index: -1;
+  z-index: -2;
 }
 
-/* @media screen(tablet) {
-  .eye__inner {
-    border-width: 2px;
-  }
-} */
+.eyelid {
+  position: absolute;
+  /* transform: translateX(-50%); */
+  width: 58%;
+  height: 30%;
+  top: 34%;
+  left: 50%;
+  border-radius: 0 0 50% 50%;
+  background-color: currentColor;
+  z-index: -1;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: center top;
+  transition: transform 0.2s cubic-bezier(0.08, 0.82, 0.61, 0.96);
+}
+
+.eyelid--close {
+  transform: translateX(-50%) scaleY(1) scaleX(1.02);
+}
 
 .eye__inner::after,
 .eye__inner::before {
