@@ -27,6 +27,8 @@ export default {
               card.removeEventListener('mouseenter', this.animatePointerIn)
               card.removeEventListener('mouseleave', this.animatePointerOut)
             })
+
+            this.animatePointerOut()
           }
         })
       })

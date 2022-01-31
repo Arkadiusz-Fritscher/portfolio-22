@@ -19,6 +19,8 @@ module.exports = {
       'powder-dust': 'var(--af-color-powder-dust)',
       ruddy: 'var(--af-color-ruddy)',
       'chefs-hat': 'var(--af-color-chefs-hat)',
+      transparent: 'transparent',
+      current: 'currentColor',
     },
     fontSize: {
       caption: [
@@ -52,6 +54,11 @@ module.exports = {
       display: [
         'var(--af-text-display)',
         { letterSpacing: '-0.07em', lineHeight: '90%' },
+      ],
+
+      button: [
+        'var(--af-text-button)',
+        { letterSpacing: '0.025em', lineHeight: '100%' },
       ],
     },
     fontFamily: {
