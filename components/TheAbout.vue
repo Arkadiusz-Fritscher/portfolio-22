@@ -74,7 +74,7 @@ export default {
       </div>
 
       <div
-        class="w-5/6 ml-auto space--left flex gap-x-[1em] my-10 tablet:my-0 tablet:order-1"
+        class="w-5/6 ml-auto space--left flex my-10 tablet:my-0 tablet:order-1"
       >
         <span class="star">
           <svg
@@ -88,7 +88,7 @@ export default {
             />
           </svg>
         </span>
-        <p class="offers">Offen für Jobangebote</p>
+        <p class="subtitle">Offen für Jobangebote</p>
       </div>
 
       <div class="link--wrapper space--right tablet:ml-auto tablet:order-3">
@@ -107,12 +107,6 @@ export default {
 
 .link--wrapper {
   flex: 0 0 70%;
-}
-
-.offers {
-  font-size: var(--af-text-lg);
-  max-width: 20ch;
-  line-height: 102%;
 }
 
 .about--content {

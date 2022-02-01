@@ -52,7 +52,7 @@ export default {
 <template>
   <section id="projects" class="wrapper">
     <div
-      class="w-5/6 tablet:w-7/12 ml-auto flex gap-x-[1em] project--subtitle pointer-events-none"
+      class="w-5/6 tablet:w-7/12 ml-auto flex project--subtitle pointer-events-none"
     >
       <span class="star">
         <svg viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,7 +62,7 @@ export default {
           />
         </svg>
       </span>
-      <p>Eine Auswahl meiner Persöhnlichen Projekten</p>
+      <p class="subtitle">Eine Auswahl meiner Persöhnlichen Projekten</p>
     </div>
 
     <div class="project--list--wrapper tablet:ml-auto tablet:w-11/12">
@@ -78,16 +78,11 @@ export default {
   margin-bottom: var(--af-space-4-y);
 }
 
-.project--subtitle p {
-  font-size: var(--af-text-lg);
-  max-width: 20ch;
-}
-
 .project--list--wrapper {
   margin-bottom: var(--af-space-1-y);
 }
 
 .project--list > *:not(:last-child) {
-  margin-bottom: 20vh;
+  margin-bottom: var(--af-space-3-y);
 }
 </style>

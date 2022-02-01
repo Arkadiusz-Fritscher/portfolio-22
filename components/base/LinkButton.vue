@@ -38,6 +38,8 @@ export default {
   --border-size: calc(var(--af-text-button) * 1.8);
   width: var(--border-size);
   height: var(--border-size);
+  transition: all 0.4s ease-out;
+  /* transition-delay: 0.2s; */
 }
 
 a svg {

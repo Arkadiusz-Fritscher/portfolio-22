@@ -99,10 +99,10 @@ export default {
 
         <!-- Title -->
         <h1 class="flex flex-col w-full text-3xl">
-          <span class="hero__title__case">
+          <span class="hero__title__case pl-[3%]">
             <span class="hero__title--first">Frontend</span>
           </span>
-          <span class="hero__title__case ml-auto pb-[0.16em]">
+          <span class="hero__title__case ml-auto pb-[0.16em] pr-[3%]">
             <span class="hero__title--first">Developer</span>
           </span>
         </h1>

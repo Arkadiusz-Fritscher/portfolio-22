@@ -81,8 +81,16 @@ body,
 .star {
   display: block;
   width: var(--af-text-lg);
-  max-height: max-content;
-  padding-top: 0.4em;
+  height: var(--af-text-lg);
+  /* height: fit-content; */
+  margin-right: 0.5rem;
+  transform: translateY(6%);
+}
+
+.subtitle {
+  max-width: 20ch;
+  line-height: 104%;
+  font-size: var(--af-text-lg);
 }
 
 @media screen(sm) {
