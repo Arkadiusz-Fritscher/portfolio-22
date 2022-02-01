@@ -5,7 +5,7 @@
         <div class="tablet:w-11/12 ml-auto flex flex-col">
           <div class="space--right ml-auto">
             <p class="text-lg max-w-[34ch]">
-              Ich bin offen für Jobangebote, Praktikas, kleinere Nebenprojekte,
+              Ich bin offen für Jobangebote, Praktika, kleinere Nebenprojekte,
               peer programming oder auch Kontakte zum Netzwerken.
             </p>
           </div>
