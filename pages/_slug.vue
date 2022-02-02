@@ -7,14 +7,18 @@ export default {
       project,
     }
   },
-  mounted() {
-    console.log(this.project)
-  },
 }
 </script>
 
 <template>
   <main class="wrapper mt-28">
+    <ProjectsProjectHeader
+      :title="project.title"
+      :stack="project.stack"
+      :services="project.services"
+      :date="project.date"
+      :links="project.links"
+    />
     <nuxt-content :document="project" tag="article" />
   </main>
 </template>

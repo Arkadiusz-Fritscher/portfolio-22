@@ -1,7 +1,7 @@
 ---
 title: The last Project
 description: 'Empower your NuxtJS application with @nuxt/content module: write in a content/ directory and fetch your Markdown, JSON, YAML and CSV files through a MongoDB like API, acting as a Git-based Headless CMS.'
-tags: ['Vue', 'Nuxt', 'Tailwind']
+stack: ['Vue', 'Nuxt', 'Tailwind']
 services: ['Design', 'Development']
 date: 'Januar 2020'
 links: { live: 'http://google.com', GitHub: 'http://github.com' }
@@ -9,8 +9,6 @@ thumbnail: 'microsoft-365-hC_796Wu-VY-unsplash.jpg'
 ---
 
 # This is a Global Vue Component
-
-<project-project-header>This is the Slot in the header component</project-project-header>
 
 Empower your NuxtJS application with `@nuxtjs/content` module: write in a `content/` directory and fetch your Markdown, JSON, YAML and CSV files through a MongoDB like API, acting as a **Git-based Headless CMS**.
 
