@@ -60,6 +60,10 @@ module.exports = {
         'var(--af-text-button)',
         { letterSpacing: '0.025em', lineHeight: '100%' },
       ],
+      contact: [
+        'var(--af-text-contact)',
+        { letterSpacing: '-0.025em', lineHeight: '100%' },
+      ],
     },
     fontFamily: {
       sans: ['Inter, sans-serif'],

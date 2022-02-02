@@ -1,0 +1,24 @@
+<template>
+  <span
+    class="border border-current rounded-full flex items-center justify-center"
+  >
+    <svg
+      width="50%"
+      height="25%"
+      viewBox="0 0 20 10"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14.0084 9.19727C14.3672 8.43187 14.714 7.76215 15.0488 7.1881C15.4076 6.61405 15.7544 6.13568 16.0893 5.75298L-3.01109e-07 5.75298L-4.32845e-07 4.2461L16.0893 4.2461C15.7544 3.83948 15.4076 3.34915 15.0488 2.7751C14.714 2.20105 14.3672 1.54329 14.0084 0.80181L15.2641 0.80181C16.771 2.54787 18.3496 3.83948 20 4.67664L20 5.32244C18.3496 6.13567 16.771 7.42728 15.2641 9.19727L14.0084 9.19727Z"
+        fill="currentColor"
+      />
+    </svg>
+  </span>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style scoped></style>

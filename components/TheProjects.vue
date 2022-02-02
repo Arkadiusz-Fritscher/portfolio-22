@@ -3,12 +3,34 @@ export default {
   data() {
     return {
       pointer: null,
+      projects: Array,
     }
+  },
+  async fetch() {
+    // const path = `/${params.pathMatch || 'index'}`
+    this.projects = await this.$content()
+      .only([
+        'title',
+        'tags',
+        'date',
+        'slug',
+        'services',
+        'createdAt',
+        'thumbnail',
+      ])
+      .sortBy('createdAt', 'desc')
+      .fetch()
+
+    // if (!projects) {
+    //   return error({ statusCode: 404, message: 'Article not found' })
+    // }
   },
 
   mounted() {
     this.pointer = document.querySelector('.cursor')
     this.pointerHoverEvents()
+
+    console.log(this.projects)
   },
 
   methods: {
@@ -67,7 +89,11 @@ export default {
 
     <div class="project--list--wrapper tablet:ml-auto tablet:w-11/12">
       <ul class="project--list">
-        <ProjectCard v-for="i in 3" :key="i" />
+        <ProjectCard
+          v-for="project in projects"
+          :key="project.slug"
+          :project="project"
+        />
       </ul>
     </div>
   </section>

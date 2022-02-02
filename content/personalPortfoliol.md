@@ -1,11 +1,11 @@
 ---
-title: 'Getting started'
+title: Personal Portfolio 2022
 description: 'Empower your NuxtJS application with @nuxt/content module: write in a content/ directory and fetch your Markdown, JSON, YAML and CSV files through a MongoDB like API, acting as a Git-based Headless CMS.'
 tags: ['Vue', 'Nuxt', 'Tailwind']
 services: ['Design', 'Development']
 date: 'Januar 2020'
 links: { live: 'http://google.com', GitHub: 'http://github.com' }
-thumbnail: 'keila-hotzel-lFmuWU0tv4M-unsplash.jpg'
+thumbnail: 'microsoft-365-hC_796Wu-VY-unsplash.jpg'
 ---
 
 # This is a Global Vue Component

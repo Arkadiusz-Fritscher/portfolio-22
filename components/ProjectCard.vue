@@ -9,29 +9,50 @@
 
     <!-- Project Title -->
     <div class="project--title overflow-hidden pointer-events-none">
-      <p ref="projectTitle" class="text-2xl font-serif">Personal Portfolio</p>
+      <p ref="projectTitle" class="text-2xl font-serif">{{ project.title }}</p>
     </div>
 
     <!-- Project thumbnail -->
     <div class="project--thumbnail">
-      <a href="#"></a>
-      <div ref="projectImg" class="project--img"></div>
+      <nuxt-link :to="project.slug" />
+      <div ref="projectImg" class="project--img" :style="thumbnail"></div>
     </div>
 
     <!-- Project Description -->
     <ul ref="projectServices" class="project--description text-sm flex">
-      <li class="project--description--date">Januar 21</li>
-      <li class="project--description--service">Concept</li>
-      <li class="project--description--service">Design</li>
-      <li class="project--description--service">Developing</li>
+      <li class="project--description--date">{{ project.date }}</li>
+      <li
+        v-for="service in project.services"
+        :key="service"
+        class="project--description--service"
+      >
+        {{ service }}
+      </li>
     </ul>
   </li>
 </template>
 
 <script>
 export default {
+  props: {
+    project: {
+      type: Object,
+      required: true,
+    },
+  },
+
+  computed: {
+    thumbnail() {
+      const url = require(`@/assets/img/thumbnails/${this.project.thumbnail}`)
+      return {
+        backgroundImage: `url(${url})`,
+      }
+    },
+  },
+
   mounted() {
     this.animateProjectCard()
+    // this.$refs.projectImg.style.backgroundImage = this.thumbnail
   },
 
   methods: {
@@ -115,7 +136,7 @@ export default {
 .project--img {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80');
+  /* background-image: url('https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80'); */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

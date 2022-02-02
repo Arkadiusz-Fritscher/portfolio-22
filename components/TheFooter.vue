@@ -1,26 +1,25 @@
 <template>
   <footer class="bg-dark-rift text-chefs-hat">
     <div id="contact" class="flex flex-col wrapper">
-      <div class="flex">
-        <div class="tablet:w-11/12 ml-auto flex flex-col">
-          <div class="space--right ml-auto">
-            <p class="text-lg max-w-[34ch]">
-              Ich bin offen für Jobangebote, Praktika, kleinere Nebenprojekte,
-              peer programming oder auch Kontakte zum Netzwerken.
-            </p>
-          </div>
+      <div class="flex justify-end tablet:w-11/12">
+        <div class="space--right justify-end">
+          <p class="text-base max-w-[34ch]">
+            Ich bin offen für Jobangebote, Praktika, kleinere Nebenprojekte,
+            peer programming oder auch Kontakte zum Netzwerken.
+          </p>
         </div>
       </div>
 
       <div class="contact flex justify-center w-full">
-        <a href="/" class="block text-center"
-          ><span class="uppercase font-serif">Get in touch</span></a
-        >
+        <a href="/" class="flex items-center text-center"
+          ><span class="uppercase font-serif link">Get in touch</span>
+          <BaseIconArrowRight class="icon" />
+        </a>
       </div>
 
       <!-- Bottom Navigation -->
       <nav aria-label="contact-navigation">
-        <ul class="flex gap-x-6">
+        <ul class="flex gap-x-6 text-grey-heather">
           <li>2021</li>
           <li class="ml-auto">
             <a href="/" class="link">Linkedin</a>
@@ -47,9 +46,16 @@ export default {}
 }
 
 .contact {
-  font-size: var(--af-text-2xl);
+  font-size: var(--af-text-contact);
   margin-top: var(--af-space-3-y);
   padding-bottom: var(--af-space-5-y);
+}
+
+.icon {
+  --size: calc(var(--af-text-contact) * 1.4);
+  width: var(--size);
+  height: var(--size);
+  margin-left: calc(var(--af-text-contact) * 0.2);
 }
 
 nav {

@@ -26,6 +26,7 @@
   --af-text-3xl: clamp(4.5rem, 1.921rem + 10.579vw, 12.5rem);
   --af-text-display: clamp(7.375rem, 2.339rem + 20.661vw, 23rem);
   --af-text-button: clamp(1.5rem, 1.017rem + 1.983vw, 3rem);
+  --af-text-contact: clamp(1.875rem, -0.18rem + 8.43vw, 8.25rem);
 
   --max-width: 100em;
   --external-gutter: clamp(1.5rem, 0.372rem + 4.628vw, 5rem);
