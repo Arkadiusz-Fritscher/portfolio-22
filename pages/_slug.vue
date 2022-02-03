@@ -1,13 +1,15 @@
 <script>
 export default {
+  layout: 'projects',
+
   async asyncData({ $content, params }) {
-    const project = await $content(params.slug).fetch()
+    const project = await $content(params.slug).fetch();
 
     return {
-      project,
-    }
-  },
-}
+      project
+    };
+  }
+};
 </script>
 
 <template>

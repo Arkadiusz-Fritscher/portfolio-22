@@ -1,7 +1,7 @@
 <script>
 export default {
   mounted() {
-    this.animateNavbar()
+    this.animateNavbar();
   },
 
   methods: {
@@ -10,16 +10,16 @@ export default {
         yPercent: 100,
         autoAlpha: 0,
         stagger: 0.1,
-        delay: 0.8,
-      })
-    },
-  },
-}
+        delay: 0.8
+      });
+    }
+  }
+};
 </script>
 
 <template>
-  <nav class="fixed top-0 inset-x-0 z-30">
-    <div class="wrapper h-16 flex items-center justify-between">
+  <nav class="fixed inset-x-0 top-0 z-30">
+    <div class="wrapper flex h-16 items-center justify-between">
       <a href="#hero">Logo</a>
 
       <!-- Tablet / Desktop Navigation -->

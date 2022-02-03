@@ -8,18 +8,14 @@ links: { live: 'http://google.com', GitHub: 'http://github.com' }
 thumbnail: 'keila-hotzel-lFmuWU0tv4M-unsplash.jpg'
 ---
 
-# This is a Global Vue Component
+<projects-image-with-text img-left image="jasmin-ne-E0XAkKWCsjg-unsplash.jpg">
+Elementum non vestibulum urna consequat etiam commodo tempor et pharetra accumsan consectetur porttitor torquent rutrum eros interdum eu. Ac vestibulum curae accumsan vestibulum morbi sapien dictumst purus consectetur dui neque suspendisse imperdiet ullamcorper risus phasellus vel ullamcorper ipsum dui ad.
+</projects-image-with-text>
 
-Empower your NuxtJS application with `@nuxtjs/content` module: write in a `content/` directory and fetch your Markdown, JSON, YAML and CSV files through a MongoDB like API, acting as a **Git-based Headless CMS**.
+<projects-image-with-text sticky image="kin-li-rrLCVqZGNFk-unsplash.jpg">
+Elementum non vestibulum urna consequat etiam commodo tempor et pharetra accumsan consectetur porttitor torquent rutrum eros interdum eu. Ac vestibulum curae accumsan vestibulum morbi sapien dictumst purus consectetur dui neque suspendisse imperdiet ullamcorper risus phasellus vel ullamcorper ipsum dui ad.
+</projects-image-with-text>
 
-## Writing content
-
-Learn how to write your `content/`, supporting Markdown, YAML, CSV and JSON: https://content.nuxtjs.org/writing.
-
-## Fetching content
-
-Learn how to fetch your content with `$content`: https://content.nuxtjs.org/fetching.
-
-## Displaying content
-
-Learn how to display your Markdown content with the `<nuxt-content>` component directly in your template: https://content.nuxtjs.org/displaying.
+<projects-callout right>
+Imperdiet ullamcorper risus phasellus vel ullamcorper ipsum dui
+</projects-callout>

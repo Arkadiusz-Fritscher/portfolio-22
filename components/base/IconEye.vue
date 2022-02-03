@@ -7,118 +7,124 @@ export default {
       minY: 44,
       maxY: 55,
       xPos: 50,
-      yPos: 50,
-    }
+      yPos: 50
+    };
   },
 
   beforeMount() {
-    this.vw = document.documentElement.clientWidth
-    this.vh = document.documentElement.clientHeight
+    this.vw = document.documentElement.clientWidth;
+    this.vh = document.documentElement.clientHeight;
   },
 
   mounted() {
     if (window.matchMedia('(any-hover: hover)').matches) {
-      this.closeEyeOnHover()
-      this.init()
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            document.addEventListener('mousemove', this.eyeFollowMouse)
-            window.addEventListener('resize', this.onResize)
-            document
-              .querySelector('.eye__outer')
-              .addEventListener('mouseenter', this.closeEyeOnHover)
+            this.init();
+            this.randomEyeClose();
+            this.closeEyeOnHover();
+
+            document.addEventListener('mousemove', this.eyeFollowMouse);
+
+            window.addEventListener('resize', this.onResize);
 
             document
               .querySelector('.eye__outer')
-              .addEventListener('mouseleave', this.openEyeOnLeave)
+              .addEventListener('mouseenter', this.closeEyeOnHover);
 
-            document.addEventListener('scroll', this.init)
+            document
+              .querySelector('.eye__outer')
+              .addEventListener('mouseleave', this.openEyeOnLeave);
+
+            document.addEventListener('scroll', this.init);
           } else {
-            document.removeEventListener('mousemove', this.eyeFollowMouse)
-            window.removeEventListener('resize', this.onResize)
-            document.removeEventListener('mouseleave', this.openEyeOnLeave)
-            document.removeEventListener('mouseenter', this.closeEyeOnHover)
-            document.removeEventListener('scroll', this.init)
-            clearTimeout(this.randomEyeClose)
+            clearTimeout(this.closeEyeLid);
+            clearTimeout(this.openEyeLid);
+
+            document.removeEventListener('mousemove', this.eyeFollowMouse);
+            window.removeEventListener('resize', this.onResize);
+            document.removeEventListener('mouseleave', this.openEyeOnLeave);
+            document.removeEventListener('mouseenter', this.closeEyeOnHover);
+            document.removeEventListener('scroll', this.init);
           }
-        })
-      })
+        });
+      });
 
-      observer.observe(document.querySelector('#hero'))
+      observer.observe(document.querySelector('#hero'));
     }
-
-    this.randomEyeClose()
   },
 
   methods: {
     init() {
-      const eye = document.querySelector('.eye__inner').getBoundingClientRect()
-      this.eyePosX = eye.x
-      this.eyePosY = eye.y
+      document.querySelector('.eyelid').classList.remove('eyelid--close');
+      const eye = document.querySelector('.eye__inner').getBoundingClientRect();
+      this.eyePosX = eye.x;
+      this.eyePosY = eye.y;
     },
 
     onResize(e) {
-      this.vw = e.target.innerWidth
-      this.vh = e.target.innerHeight
+      this.vw = e.target.innerWidth;
+      this.vh = e.target.innerHeight;
 
       this.eyePosX = document
         .querySelector('.eye__inner')
-        .getBoundingClientRect().x
+        .getBoundingClientRect().x;
 
       this.eyePosY = document
         .querySelector('.eye__inner')
-        .getBoundingClientRect().y
+        .getBoundingClientRect().y;
     },
 
     eyeFollowMouse(event) {
-      this.eyeXPercent = this.eyePosX / this.vw
-      this.eyeYPercent = this.eyePosY / this.vh
-      this.x = Math.round((event.x * 50) / (this.vw * this.eyeXPercent))
-      this.y = Math.round((event.y * 50) / (this.vh * this.eyeYPercent))
+      this.eyeXPercent = this.eyePosX / this.vw;
+      this.eyeYPercent = this.eyePosY / this.vh;
+      this.x = Math.round((event.x * 50) / (this.vw * this.eyeXPercent));
+      this.y = Math.round((event.y * 50) / (this.vh * this.eyeYPercent));
 
       if (this.x < this.minX) {
-        this.xPos = this.minX
+        this.xPos = this.minX;
       } else if (this.x > this.maxX) {
-        this.xPos = this.maxX
+        this.xPos = this.maxX;
       } else {
-        this.xPos = this.x
+        this.xPos = this.x;
       }
 
       if (this.y < this.minY) {
-        this.yPos = this.minY
+        this.yPos = this.minY;
       } else if (this.y > this.maxY) {
-        this.yPos = this.maxY
+        this.yPos = this.maxY;
       } else {
-        this.yPos = this.y
+        this.yPos = this.y;
       }
 
-      document.querySelector('.eye__inner').style.left = this.xPos + '%'
-      document.querySelector('.eye__inner').style.top = this.yPos + '%'
+      document.querySelector('.eye__inner').style.left = this.xPos + '%';
+      document.querySelector('.eye__inner').style.top = this.yPos + '%';
     },
 
     closeEyeOnHover() {
-      document.querySelector('.eyelid').classList.add('eyelid--close')
+      document.querySelector('.eyelid').classList.add('eyelid--close');
     },
 
     openEyeOnLeave() {
-      document.querySelector('.eyelid').classList.remove('eyelid--close')
+      document.querySelector('.eyelid').classList.remove('eyelid--close');
     },
 
     randomEyeClose() {
-      const min = 5
-      const max = 10
-      const rand = Math.floor(Math.random() * (max - min + 1) + min) // Generate Random number between 5 - 10
+      const min = 5;
+      const max = 10;
+      const rand = Math.floor(Math.random() * (max - min + 1) + min); // Generate Random number between 5 - 10
 
-      document.querySelector('.eyelid').classList.add('eyelid--close')
-      setTimeout(() => {
-        document.querySelector('.eyelid').classList.remove('eyelid--close')
-      }, 200)
+      document.querySelector('.eyelid').classList.add('eyelid--close');
 
-      setTimeout(this.randomEyeClose, rand * 1000)
-    },
-  },
-}
+      this.openEyeLid = setTimeout(function () {
+        document.querySelector('.eyelid').classList.remove('eyelid--close');
+      }, 200);
+
+      this.closeEyeLid = setTimeout(this.randomEyeClose, rand * 1000);
+    }
+  }
+};
 </script>
 
 <template>

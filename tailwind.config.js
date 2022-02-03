@@ -4,13 +4,14 @@ module.exports = {
     './layouts/**/*.vue',
     './pages/**/*.vue',
     './plugins/**/*.{js,ts}',
-    './nuxt.config.{js,ts}',
+    './nuxt.config.js',
+    './nuxt.config.ts'
   ],
   theme: {
     screens: {
       sm: '24em',
       tablet: '52em',
-      desktop: '78em',
+      desktop: '78em'
     },
     colors: {
       tristesse: 'var(--af-color-tristesse)',
@@ -20,56 +21,56 @@ module.exports = {
       ruddy: 'var(--af-color-ruddy)',
       'chefs-hat': 'var(--af-color-chefs-hat)',
       transparent: 'transparent',
-      current: 'currentColor',
+      current: 'currentColor'
     },
     fontSize: {
       caption: [
         'var(--af-text-caption)',
-        { letterSpacing: '0.03em', lineHeight: '100%' },
+        { letterSpacing: '0.03em', lineHeight: '100%' }
       ],
       sm: [
         'var(--af-text-sm)',
-        { letterSpacing: '0.025rem', lineHeight: '100%' },
+        { letterSpacing: '0.025rem', lineHeight: '100%' }
       ],
       base: [
         'var(--af-text-base)',
-        { letterSpacing: '0.02em', lineHeight: '150%' },
+        { letterSpacing: '0.02em', lineHeight: '150%' }
       ],
       lg: [
         'var(--af-text-lg)',
-        { letterSpacing: '-0.003em', lineHeight: '110%' },
+        { letterSpacing: '-0.003em', lineHeight: '110%' }
       ],
       xl: [
         'var(--af-text-xl)',
-        { letterSpacing: '-0.003em', lineHeight: '130%' },
+        { letterSpacing: '-0.003em', lineHeight: '130%' }
       ],
       '2xl': [
         'var(--af-text-2xl)',
-        { letterSpacing: '-0.025em', lineHeight: '106%' },
+        { letterSpacing: '-0.025em', lineHeight: '106%' }
       ],
       '3xl': [
         'var(--af-text-3xl)',
-        { letterSpacing: '-0.05em', lineHeight: '100%' },
+        { letterSpacing: '-0.05em', lineHeight: '100%' }
       ],
       display: [
         'var(--af-text-display)',
-        { letterSpacing: '-0.07em', lineHeight: '90%' },
+        { letterSpacing: '-0.07em', lineHeight: '90%' }
       ],
 
       button: [
         'var(--af-text-button)',
-        { letterSpacing: '0.025em', lineHeight: '100%' },
+        { letterSpacing: '0.025em', lineHeight: '100%' }
       ],
       contact: [
         'var(--af-text-contact)',
-        { letterSpacing: '-0.025em', lineHeight: '100%' },
-      ],
+        { letterSpacing: '-0.025em', lineHeight: '100%' }
+      ]
     },
     fontFamily: {
       sans: ['Inter, sans-serif'],
-      serif: ['Baskervville, serif'],
+      serif: ['Baskervville, serif']
     },
-    extend: {},
+    extend: {}
   },
-  plugins: [],
-}
+  plugins: []
+};

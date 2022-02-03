@@ -3,31 +3,31 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
+      required: true
     },
     stack: {
       type: Array,
-      required: true,
+      required: true
     },
     services: {
       type: Array,
-      required: true,
+      required: true
     },
     date: {
       type: String,
-      required: true,
+      required: true
     },
     links: {
       type: Object,
-      required: true,
-    },
-  },
-}
+      required: true
+    }
+  }
+};
 </script>
 
 <template>
   <header>
-    <div>
+    <div class="pb-6 tablet:pb-10">
       <nuxt-link to="/#projects">Back</nuxt-link>
     </div>
     <div>
@@ -39,7 +39,7 @@ export default {
         <h1 class="font-serif text-2xl">{{ title }}</h1>
       </div>
 
-      <div class="text-sm flex flex-wrap">
+      <div class="flex flex-wrap text-sm">
         <div v-if="stack" class="stack mb-8">
           <p class="list--title">Tech Stack</p>
           <ul class="stack--list">
@@ -86,13 +86,13 @@ header {
 }
 
 .list--title {
-  @apply text-tristesse mb-2;
+  @apply mb-2 text-tristesse;
 }
 
 .stack--list,
 .services--list,
 .link--list {
-  @apply text-grey-heather flex gap-x-1;
+  @apply flex gap-x-1 text-grey-heather;
 }
 
 .stack--list li:not(:last-child)::after,
@@ -102,7 +102,7 @@ header {
 }
 
 .link--list {
-  @apply tablet:justify-end gap-x-2;
+  @apply gap-x-2 tablet:justify-end;
 }
 
 .project--links {
@@ -111,13 +111,13 @@ header {
 }
 
 .project--link {
-  @apply py-2 px-6 text-tristesse border border-tristesse rounded-full;
+  @apply rounded-full border border-tristesse py-2 px-6 text-tristesse;
   transition: all 0.3s ease-out;
   transition-delay: 0.2s;
 }
 
 .project--link:hover {
-  @apply text-chefs-hat bg-tristesse;
+  @apply bg-tristesse text-chefs-hat;
   transition: all 0.4s ease-in;
 }
 

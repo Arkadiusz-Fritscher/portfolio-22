@@ -1,9 +1,9 @@
 <template>
   <div
     ref="sectionTitleWrapper"
-    class="section-title overflow-x-hidden overflow-x-clip pointer-events-none"
+    class="section-title pointer-events-none overflow-x-hidden overflow-x-clip"
   >
-    <ul ref="sectionTitle" class="text-display flex gap-x-[0.3em] font-serif">
+    <ul ref="sectionTitle" class="flex gap-x-[0.3em] font-serif text-display">
       <li v-for="i in 3" :key="i">
         {{ title }}
       </li>
@@ -16,12 +16,12 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
 
   mounted() {
-    this.slideOnScroll()
+    this.slideOnScroll();
   },
 
   methods: {
@@ -31,14 +31,14 @@ export default {
           trigger: this.$refs.sectionTitleWrapper,
           start: 'top bottom',
           end: 'bottom top',
-          scrub: 1,
+          scrub: 1
         },
         xPercent: -100,
-        ease: 'sine.out',
-      })
-    },
-  },
-}
+        ease: 'sine.out'
+      });
+    }
+  }
+};
 </script>
 
 <style scoped>

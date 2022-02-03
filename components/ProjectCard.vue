@@ -8,8 +8,8 @@
     </div>
 
     <!-- Project Title -->
-    <div class="project--title overflow-hidden pointer-events-none">
-      <p ref="projectTitle" class="text-2xl font-serif">{{ project.title }}</p>
+    <div class="project--title pointer-events-none overflow-hidden">
+      <p ref="projectTitle" class="font-serif text-2xl">{{ project.title }}</p>
     </div>
 
     <!-- Project thumbnail -->
@@ -19,7 +19,7 @@
     </div>
 
     <!-- Project Description -->
-    <ul ref="projectServices" class="project--description text-sm flex">
+    <ul ref="projectServices" class="project--description flex text-sm">
       <li class="project--description--date">{{ project.date }}</li>
       <li
         v-for="service in project.services"
@@ -37,21 +37,22 @@ export default {
   props: {
     project: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
 
   computed: {
     thumbnail() {
-      const url = require(`@/assets/img/thumbnails/${this.project.thumbnail}`)
+      // eslint-disable-next-line no-undef
+      const url = require(`@/assets/img/thumbnails/${this.project.thumbnail}`);
       return {
-        backgroundImage: `url(${url})`,
-      }
-    },
+        backgroundImage: `url(${url})`
+      };
+    }
   },
 
   mounted() {
-    this.animateProjectCard()
+    this.animateProjectCard();
     // this.$refs.projectImg.style.backgroundImage = this.thumbnail
   },
 
@@ -65,48 +66,48 @@ export default {
           toggleActions: 'play none none reset',
           //   scrub: 0.5,
           //   markers: true,
-          delay: 0.3, // not sure
+          delay: 0.3 // not sure
         },
         defaults: {
           ease: 'power4.out',
-          duration: 0.8,
-        },
-      })
+          duration: 0.8
+        }
+      });
 
       tl.from(this.$refs.projectImg, {
-        yPercent: 100,
-      })
+        yPercent: 100
+      });
 
       tl.from(
         this.$refs.projectTitle,
         {
-          xPercent: -100,
+          xPercent: -100
         },
         '-=0.4'
-      )
+      );
 
       tl.from(
         this.$refs.projectCount,
         {
           yPercent: 30,
           autoAlpha: 0,
-          duration: 0.4,
+          duration: 0.4
         },
         '-=0.2'
-      )
+      );
 
       tl.from(
         this.$refs.projectServices,
         {
           autoAlpha: 0,
           yPercent: 40,
-          duration: 0.4,
+          duration: 0.4
         },
         '<'
-      )
-    },
-  },
-}
+      );
+    }
+  }
+};
 </script>
 
 <style scoped>

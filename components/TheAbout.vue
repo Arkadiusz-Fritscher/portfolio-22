@@ -5,55 +5,55 @@ export default {
       memes: {
         plumber: require('@/assets/memes/plumber.webp'),
         selfTaught: require('@/assets/memes/tired.gif'),
-        toddler: require('@/assets/memes/toddlers.gif'),
-      },
-    }
+        toddler: require('@/assets/memes/toddlers.gif')
+      }
+    };
   },
 
   mounted() {
-    this.memeElements()
+    this.memeElements();
   },
 
   methods: {
     memeElements() {
-      const memeElements = document.querySelectorAll('.easteregg')
+      const memeElements = document.querySelectorAll('.easteregg');
 
       memeElements.forEach((element) => {
         element.addEventListener('mouseover', (e) => {
-          const meme = e.target.dataset.meme
-          const memeElement = document.querySelector('.meme')
+          const meme = e.target.dataset.meme;
+          const memeElement = document.querySelector('.meme');
 
-          memeElement.style.backgroundImage = `url(${this.memes[meme]})`
+          memeElement.style.backgroundImage = `url(${this.memes[meme]})`;
 
           element.addEventListener('mousemove', (event) => {
-            this.x = event.pageX
-            this.y = event.pageY
+            this.x = event.pageX;
+            this.y = event.pageY;
 
-            memeElement.style.top = this.y - 10 + 'px'
-            memeElement.style.left = this.x + 10 + 'px'
-            memeElement.style.display = 'block'
-          })
+            memeElement.style.top = this.y - 10 + 'px';
+            memeElement.style.left = this.x + 10 + 'px';
+            memeElement.style.display = 'block';
+          });
 
-          element.addEventListener('mouseleave', (event) => {
-            memeElement.style.display = 'none'
-          })
-        })
-      })
+          element.addEventListener('mouseleave', () => {
+            memeElement.style.display = 'none';
+          });
+        });
+      });
     },
 
-    displayMemes() {},
-  },
-}
+    displayMemes() {}
+  }
+};
 </script>
 
 <template>
   <section id="about" class="wrapper">
     <span class="meme"></span>
     <div
-      class="about--content flex flex-col tablet:flex-wrap tablet:flex-row tablet:w-11/12 tablet:ml-auto"
+      class="about--content flex flex-col tablet:ml-auto tablet:w-11/12 tablet:flex-row tablet:flex-wrap"
     >
-      <div class="space--right tablet:order-2 about--text about--text">
-        <p class="text-base text-grey-heather max-w-prose">
+      <div class="space--right about--text about--text tablet:order-2">
+        <p class="max-w-prose text-base text-grey-heather">
           Hallo, mein name ist Arkadiusz Fritscher, ich bin ein Self taght
           Frontent Entwickler aus der Nähne von Mainz. Neben meinem Hauptberuf
           als
@@ -74,7 +74,7 @@ export default {
       </div>
 
       <div
-        class="w-5/6 ml-auto space--left flex my-10 tablet:my-0 tablet:order-1"
+        class="space--left my-10 ml-auto flex w-5/6 tablet:order-1 tablet:my-0"
       >
         <span class="star">
           <svg
@@ -91,7 +91,7 @@ export default {
         <p class="subtitle">Offen für Jobangebote</p>
       </div>
 
-      <div class="link--wrapper space--right tablet:ml-auto tablet:order-3">
+      <div class="link--wrapper space--right tablet:order-3 tablet:ml-auto">
         <BaseLinkButton text="Contact me" url="/" />
       </div>
     </div>

@@ -5,78 +5,78 @@ export default {
   data() {
     return {
       isScrolling: null,
-      playFaster: false,
-    }
+      playFaster: false
+    };
   },
 
   mounted() {
-    this.heroAnimation()
+    this.heroAnimation();
     if (window.matchMedia('(any-hover: hover)').matches) {
-      const observer = new IntersectionObserver((entries, observer) => {
+      const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            document.addEventListener('scroll', this.spinFaster, false)
+            document.addEventListener('scroll', this.spinFaster, false);
           } else {
-            document.removeEventListener('scroll', this.spinFaster)
+            document.removeEventListener('scroll', this.spinFaster);
           }
-        })
-      })
+        });
+      });
 
-      observer.observe(document.querySelector('#hero'))
+      observer.observe(document.querySelector('#hero'));
     }
   },
 
   methods: {
-    spinFaster(e) {
-      window.clearTimeout(this.isScrolling)
-      const spinner = document.querySelector('.spinner')
+    spinFaster() {
+      window.clearTimeout(this.isScrolling);
+      const spinner = document.querySelector('.spinner');
       if (spinner.style.animationDuration !== '4s') {
-        spinner.style.animationDuration = 4 + 's'
+        spinner.style.animationDuration = 4 + 's';
       }
 
       this.isScrolling = setTimeout(function () {
-        spinner.style.animationDuration = 40 + 's'
-      }, 180)
+        spinner.style.animationDuration = 40 + 's';
+      }, 180);
     },
 
     heroAnimation() {
       const tl = this.$gsap.timeline({
-        defaults: { ease: 'power2.out', duration: 0.8 },
+        defaults: { ease: 'power2.out', duration: 0.8 }
         // scrollTrigger: {
         //   trigger: '#hero',
         //   markers: true,
         // },
-      })
+      });
 
       tl.from('.hero__title__case span', {
         yPercent: 108,
         stagger: 0.2,
-        delay: 0.5,
-      })
+        delay: 0.5
+      });
 
       tl.from(
         '.hero__subtitle',
         {
-          yPercent: 100,
+          yPercent: 100
         },
         '-=0.2'
-      )
+      );
 
       tl.from('.hero__caption', {
-        autoAlpha: 0,
-      })
-    },
-  },
-}
+        autoAlpha: 0
+      });
+    }
+  }
+};
 </script>
 
 <template>
   <section id="hero" class="--vh relative">
-    <div class="--vh wrapper flex items-center justify-center w-full relative">
-      <div class="relative font-serif w-full tablet:w-10/12">
+    <div class="--vh wrapper relative flex w-full items-center justify-center">
+      <div class="relative w-full font-serif tablet:w-10/12">
         <!-- Decorative name element -->
         <div
-          class="hero__caption absolute top-[-14vh] left-1/2 -translate-x-1/2 flex flex-col items-center gap-y-4"
+          class="hero__caption absolute top-[-14vh] left-1/2 flex -translate-x-1/2 flex-col items-center gap-y-4"
         >
           <span>
             <svg
@@ -92,13 +92,13 @@ export default {
               />
             </svg>
           </span>
-          <span class="whitespace-nowrap font-sans uppercase text-caption"
+          <span class="whitespace-nowrap font-sans text-caption uppercase"
             >Arkadiusz Fritscher</span
           >
         </div>
 
         <!-- Title -->
-        <h1 class="flex flex-col w-full text-3xl">
+        <h1 class="flex w-full flex-col text-3xl">
           <span class="hero__title__case pl-[3%]">
             <span class="hero__title--first">Frontend</span>
           </span>
@@ -110,7 +110,7 @@ export default {
         <!-- Subtitle -->
         <div class="hero__subtitle__case absolute right-0 top-[116%]">
           <div
-            class="hero__subtitle text-lg sm:text-xl flex items-center gap-x-[0.1em]"
+            class="hero__subtitle flex items-center gap-x-[0.1em] text-lg sm:text-xl"
           >
             <span>with an</span>
             <BaseIconEye />
@@ -239,8 +239,8 @@ export default {
   transform-origin: center center;
 }
 
-.spinner svg {
-}
+/* .spinner svg {
+} */
 
 .spin-faster {
   animation-duration: 5s;

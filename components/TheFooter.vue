@@ -1,18 +1,18 @@
 <template>
   <footer class="bg-dark-rift text-chefs-hat">
-    <div id="contact" class="flex flex-col wrapper">
+    <div id="contact" class="wrapper flex flex-col">
       <div class="flex justify-end tablet:w-11/12">
         <div class="space--right justify-end">
-          <p class="text-base max-w-[34ch]">
+          <p class="max-w-[34ch] text-base">
             Ich bin offen für Jobangebote, Praktika, kleinere Nebenprojekte,
             peer programming oder auch Kontakte zum Netzwerken.
           </p>
         </div>
       </div>
 
-      <div class="contact flex justify-center w-full">
+      <div class="contact flex w-full justify-center">
         <a href="/" class="flex items-center text-center"
-          ><span class="uppercase font-serif link">Get in touch</span>
+          ><span class="link font-serif uppercase">Get in touch</span>
           <BaseIconArrowRight class="icon" />
         </a>
       </div>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped>

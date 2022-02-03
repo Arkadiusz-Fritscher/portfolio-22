@@ -3,8 +3,8 @@ export default {
   data() {
     return {
       pointer: null,
-      projects: Array,
-    }
+      projects: Array
+    };
   },
   async fetch() {
     // const path = `/${params.pathMatch || 'index'}`
@@ -16,10 +16,10 @@ export default {
         'slug',
         'services',
         'createdAt',
-        'thumbnail',
+        'thumbnail'
       ])
       .sortBy('createdAt', 'desc')
-      .fetch()
+      .fetch();
 
     // if (!projects) {
     //   return error({ statusCode: 404, message: 'Article not found' })
@@ -27,54 +27,54 @@ export default {
   },
 
   mounted() {
-    this.pointer = document.querySelector('.cursor')
-    this.pointerHoverEvents()
+    this.pointer = document.querySelector('.cursor');
+    this.pointerHoverEvents();
 
-    console.log(this.projects)
+    console.log(this.projects);
   },
 
   methods: {
     pointerHoverEvents() {
-      const projectCards = document.querySelectorAll('.project--thumbnail')
+      const projectCards = document.querySelectorAll('.project--thumbnail');
 
-      const observer = new IntersectionObserver((entries, observer) => {
+      const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             projectCards.forEach((card) => {
-              card.addEventListener('mouseenter', this.animatePointerIn)
-              card.addEventListener('mouseleave', this.animatePointerOut)
-            })
+              card.addEventListener('mouseenter', this.animatePointerIn);
+              card.addEventListener('mouseleave', this.animatePointerOut);
+            });
           } else {
             projectCards.forEach((card) => {
-              card.removeEventListener('mouseenter', this.animatePointerIn)
-              card.removeEventListener('mouseleave', this.animatePointerOut)
-            })
+              card.removeEventListener('mouseenter', this.animatePointerIn);
+              card.removeEventListener('mouseleave', this.animatePointerOut);
+            });
 
-            this.animatePointerOut()
+            this.animatePointerOut();
           }
-        })
-      })
+        });
+      });
 
-      observer.observe(document.querySelector('#projects'))
+      observer.observe(document.querySelector('#projects'));
     },
 
     animatePointerIn() {
-      this.pointer.classList.add('cursor-hover')
-      this.pointer.innerText = 'watch project'
+      this.pointer.classList.add('cursor-hover');
+      this.pointer.innerText = 'watch project';
     },
 
     animatePointerOut() {
-      this.pointer.classList.remove('cursor-hover')
-      this.pointer.innerText = ''
-    },
-  },
-}
+      this.pointer.classList.remove('cursor-hover');
+      this.pointer.innerText = '';
+    }
+  }
+};
 </script>
 
 <template>
   <section id="projects" class="wrapper">
     <div
-      class="w-5/6 tablet:w-7/12 ml-auto flex project--subtitle pointer-events-none"
+      class="project--subtitle pointer-events-none ml-auto flex w-5/6 tablet:w-7/12"
     >
       <span class="star">
         <svg viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
