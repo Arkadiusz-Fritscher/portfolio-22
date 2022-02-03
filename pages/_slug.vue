@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <main class="wrapper mt-28">
+  <main class="wrapper">
     <ProjectsProjectHeader
       :title="project.title"
       :stack="project.stack"
@@ -26,5 +26,10 @@ export default {
 <style>
 .nuxt-content h1 {
   @apply text-lg;
+}
+
+main {
+  padding-top: var(--af-space-5-y);
+  padding-bottom: var(--af-space-4-y);
 }
 </style>

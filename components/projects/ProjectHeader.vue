@@ -32,30 +32,34 @@ export default {
     </div>
     <div>
       <div>
-        <span>{{ date }}</span>
+        <span class="text-sm text-grey-heather">{{ date }}</span>
       </div>
-      <div>
-        <h1>{{ title }}</h1>
+
+      <div class="project--title">
+        <h1 class="font-serif text-2xl">{{ title }}</h1>
       </div>
-      <div>
-        <div v-if="stack">
-          <p>Techsteck</p>
-          <ul>
+
+      <div class="text-sm flex flex-wrap">
+        <div v-if="stack" class="stack mb-8">
+          <p class="list--title">Tech Stack</p>
+          <ul class="stack--list">
             <li v-for="entry in stack" :key="entry">{{ entry }}</li>
           </ul>
         </div>
 
-        <div v-if="services">
-          <p>Services</p>
-          <ul>
-            <li v-for="service in services" :key="service">{{ service }}</li>
+        <div v-if="services" class="services mb-10">
+          <p class="list--title">Services</p>
+          <ul class="services--list">
+            <li v-for="service in services" :key="service">
+              {{ service }}
+            </li>
           </ul>
         </div>
 
-        <div v-if="links">
-          <ul>
+        <div v-if="links" class="project--links">
+          <ul class="link--list">
             <li v-for="(url, name) in links" :key="name">
-              <a :href="url">{{ name }}</a>
+              <a :href="url" class="project--link">{{ name }}</a>
             </li>
           </ul>
         </div>
@@ -64,4 +68,63 @@ export default {
   </header>
 </template>
 
-<style scoped></style>
+<style scoped>
+header {
+  padding-bottom: var(--af-space-3-y);
+}
+
+.project--title {
+  padding-bottom: var(--af-space-2-y);
+}
+
+.stack,
+.services {
+  flex: 0 1 50%;
+}
+
+.services {
+}
+
+.list--title {
+  @apply text-tristesse mb-2;
+}
+
+.stack--list,
+.services--list,
+.link--list {
+  @apply text-grey-heather flex gap-x-1;
+}
+
+.stack--list li:not(:last-child)::after,
+.services--list li:not(:last-child)::after {
+  content: '/';
+  padding-left: 0.125em;
+}
+
+.link--list {
+  @apply tablet:justify-end gap-x-2;
+}
+
+.project--links {
+  flex: 0 0 100%;
+  display: block;
+}
+
+.project--link {
+  @apply py-2 px-6 text-tristesse border border-tristesse rounded-full;
+  transition: all 0.3s ease-out;
+  transition-delay: 0.2s;
+}
+
+.project--link:hover {
+  @apply text-chefs-hat bg-tristesse;
+  transition: all 0.4s ease-in;
+}
+
+@media screen(tablet) {
+  .stack,
+  .services {
+    flex: 0 1 30%;
+  }
+}
+</style>
