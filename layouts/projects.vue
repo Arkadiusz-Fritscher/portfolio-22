@@ -9,6 +9,7 @@ export default {
   <section class="relative">
     <div class="cursor"></div>
     <Nuxt />
+    <ProjectsNextPrevProject />
     <TheFooter />
   </section>
 </template>

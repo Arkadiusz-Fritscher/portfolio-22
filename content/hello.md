@@ -19,3 +19,5 @@ Elementum non vestibulum urna consequat etiam commodo tempor et pharetra accumsa
 <projects-callout right>
 Imperdiet ullamcorper risus phasellus vel ullamcorper ipsum dui
 </projects-callout>
+
+<projects-project-image image="kin-li-rrLCVqZGNFk-unsplash.jpg" />
