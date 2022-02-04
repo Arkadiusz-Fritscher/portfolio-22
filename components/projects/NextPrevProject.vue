@@ -8,14 +8,6 @@
         :url="prevProject.path"
         :subtitle="prevProject.title"
       />
-
-      <BaseProjectBrowsButton
-        v-else
-        left
-        text="Back"
-        url="/#projects"
-        subtitle="Back to start"
-      />
     </div>
 
     <div>
@@ -25,8 +17,6 @@
         :url="nextProject.path"
         :subtitle="nextProject.title"
       />
-
-      <BaseProjectBrowsButton v-else text="End" url="/#projects" />
     </div>
   </div>
 </template>
