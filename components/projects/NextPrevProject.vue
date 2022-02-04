@@ -1,17 +1,32 @@
 <template>
-  <div class="wrapper flex items-center justify-between">
+  <div class="project__browse wrapper flex items-center justify-between">
     <div>
-      <nuxt-link v-if="prevProject" :to="prevProject.path">{{
-        prevProject.title
-      }}</nuxt-link>
-      <nuxt-link v-else to="/">Back to Start</nuxt-link>
+      <BaseProjectBrowsButton
+        v-if="prevProject"
+        left
+        text="Previews Project"
+        :url="prevProject.path"
+        :subtitle="prevProject.title"
+      />
+
+      <BaseProjectBrowsButton
+        v-else
+        left
+        text="Back"
+        url="/#projects"
+        subtitle="Back to start"
+      />
     </div>
 
     <div>
-      <nuxt-link v-if="nextProject" :to="nextProject.path">{{
-        nextProject.title
-      }}</nuxt-link>
-      <nuxt-link v-else to="/">Back to Start</nuxt-link>
+      <BaseProjectBrowsButton
+        v-if="nextProject"
+        text="Next Project"
+        :url="nextProject.path"
+        :subtitle="nextProject.title"
+      />
+
+      <BaseProjectBrowsButton v-else text="End" url="/#projects" />
     </div>
   </div>
 </template>
@@ -43,12 +58,19 @@ export default {
   },
 
   watch: {
-    $route(to, from) {
+    $route() {
       this.$fetch();
-      console.log(this.projects);
     }
   }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.project__browse {
+  padding-top: var(--af-space-3-y);
+  padding-bottom: var(--af-space-3-y);
+}
+a {
+  padding: 1rem 0.25rem;
+}
+</style>
