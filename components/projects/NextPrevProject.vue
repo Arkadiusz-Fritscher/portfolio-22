@@ -4,7 +4,7 @@
       <BaseProjectBrowsButton
         v-if="prevProject"
         left
-        text="Previews Project"
+        text="Previews"
         :url="prevProject.path"
         :subtitle="prevProject.title"
       />
@@ -13,7 +13,7 @@
     <div>
       <BaseProjectBrowsButton
         v-if="nextProject"
-        text="Next Project"
+        text="Next"
         :url="nextProject.path"
         :subtitle="nextProject.title"
       />
