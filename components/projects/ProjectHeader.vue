@@ -36,6 +36,7 @@ export default {
         <span class="link font-serif">Back</span>
       </nuxt-link>
     </div>
+
     <div>
       <div>
         <span class="text-sm text-grey-heather">{{ date }}</span>
@@ -45,18 +46,30 @@ export default {
         <h1 class="font-serif text-2xl">{{ title }}</h1>
       </div>
 
-      <div class="flex flex-wrap text-sm">
+      <div class="flex flex-wrap gap-x-4 text-sm">
         <div v-if="stack" class="stack mb-8">
-          <p class="list--title">Tech Stack</p>
+          <p class="list--title">
+            <BaseIconStar class="w-4" />
+            <span>Tech Stack</span>
+          </p>
           <ul class="stack--list">
-            <li v-for="entry in stack" :key="entry">{{ entry }}</li>
+            <li v-for="entry in stack" :key="entry" class="whitespace-nowrap">
+              {{ entry }}
+            </li>
           </ul>
         </div>
 
         <div v-if="services" class="services mb-10">
-          <p class="list--title">Services</p>
+          <p class="list--title">
+            <BaseIconStar class="w-4" />
+            <span>Services</span>
+          </p>
           <ul class="services--list">
-            <li v-for="service in services" :key="service">
+            <li
+              v-for="service in services"
+              :key="service"
+              class="whitespace-nowrap"
+            >
               {{ service }}
             </li>
           </ul>
@@ -85,14 +98,14 @@ header {
 
 .stack,
 .services {
-  flex: 0 1 50%;
+  flex: 0 1 46%;
 }
 
 .services {
 }
 
 .list--title {
-  @apply mb-2 text-tristesse;
+  @apply mb-2 flex items-center gap-x-2 text-tristesse;
 }
 
 .stack--list,

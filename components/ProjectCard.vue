@@ -9,7 +9,9 @@
 
     <!-- Project Title -->
     <div class="project--title pointer-events-none overflow-hidden">
-      <p ref="projectTitle" class="font-serif text-2xl">{{ project.title }}</p>
+      <p ref="projectTitle" class="font-serif text-2xl">
+        {{ project.title }}
+      </p>
     </div>
 
     <!-- Project thumbnail -->
