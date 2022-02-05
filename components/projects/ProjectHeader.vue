@@ -28,7 +28,13 @@ export default {
 <template>
   <header>
     <div class="pb-6 tablet:pb-10">
-      <nuxt-link to="/#projects">Back</nuxt-link>
+      <nuxt-link
+        class="link__back flex max-w-fit items-center gap-x-2 text-sm"
+        to="/#projects"
+      >
+        <BaseIconArrowRight class="arrow__icon h-8 w-8 rotate-180" />
+        <span class="link font-serif">Back</span>
+      </nuxt-link>
     </div>
     <div>
       <div>
@@ -125,6 +131,13 @@ header {
   .stack,
   .services {
     flex: 0 1 30%;
+  }
+}
+
+@media (hover: hover) {
+  .link__back:hover .arrow__icon {
+    @apply border-transparent bg-ruddy text-chefs-hat;
+    transition: all 0.2s ease-in;
   }
 }
 </style>

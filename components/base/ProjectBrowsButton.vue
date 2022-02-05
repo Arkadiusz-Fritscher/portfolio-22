@@ -1,13 +1,10 @@
 <template>
   <nuxt-link
     :to="url"
-    class="group flex flex-row-reverse items-center gap-x-4 text-right"
+    class="flex flex-row-reverse items-center gap-x-4 text-right"
     :class="{ previews__link: left }"
   >
-    <BaseIconArrowRight
-      class="arrow__icon group-hover:border-transparent group-hover:bg-ruddy group-hover:text-chefs-hat"
-      :class="{ 'rotate-180': left }"
-    />
+    <BaseIconArrowRight class="arrow__icon" :class="{ 'rotate-180': left }" />
     <span class="flex flex-col gap-y-1">
       <span class="link__title font-serif text-lg">{{ text }}</span>
       <span v-if="subtitle" class="text-sm text-grey-heather">{{
@@ -55,6 +52,7 @@ export default {
 .link__title {
   position: relative;
 }
+
 .link__title::before {
   content: '';
   display: block;
@@ -69,9 +67,15 @@ export default {
   transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-a:hover .link__title::before {
-  transform: scaleX(1);
-  transition-delay: 0.2s;
-  transform-origin: left center;
+@media (hover: hover) {
+  a:hover .link__title::before {
+    transform: scaleX(1);
+    transition-delay: 0.2s;
+    transform-origin: left center;
+  }
+
+  a:hover .arrow__icon {
+    @apply border-transparent bg-ruddy text-chefs-hat;
+  }
 }
 </style>
