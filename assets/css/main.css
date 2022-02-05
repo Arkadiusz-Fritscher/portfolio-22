@@ -43,13 +43,10 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-/* html,
-body,
-#__nuxt,
-#__layout {
-  overflow-x: hidden;
-  max-width: 100vw;
-} */
+html,
+body {
+  overscroll-behavior-y: contain;
+}
 
 .--vh {
   height: 100vh; /* Fallback for browsers that do not support Custom Properties */

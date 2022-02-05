@@ -2,9 +2,9 @@
   <li ref="projectCard" class="project--card">
     <!-- Project Count -->
     <div ref="projectCount" class="project--count text-caption">
-      <span>01</span>
+      <span>0{{ number }}</span>
       <span>/</span>
-      <span>03</span>
+      <span>0{{ totalProjects }}</span>
     </div>
 
     <!-- Project Title -->
@@ -38,6 +38,14 @@ export default {
     project: {
       type: Object,
       required: true
+    },
+    number: {
+      type: Number,
+      required: true
+    },
+    totalProjects: {
+      type: Number,
+      requied: true
     }
   },
 
@@ -53,7 +61,7 @@ export default {
 
   mounted() {
     this.animateProjectCard();
-    // this.$refs.projectImg.style.backgroundImage = this.thumbnail
+    console.log(this.project);
   },
 
   methods: {

@@ -7,7 +7,6 @@ export default {
     };
   },
   async fetch() {
-    // const path = `/${params.pathMatch || 'index'}`
     this.projects = await this.$content()
       .only([
         'title',
@@ -20,10 +19,9 @@ export default {
       ])
       .sortBy('createdAt', 'desc')
       .fetch();
-
-    // if (!projects) {
-    //   return error({ statusCode: 404, message: 'Article not found' })
-    // }
+    // .catch((err) => {
+    //   error({ statusCode: 404, message: 'Projects not found' });
+    // });
   },
 
   mounted() {
@@ -90,9 +88,11 @@ export default {
     <div class="project--list--wrapper tablet:ml-auto tablet:w-11/12">
       <ul class="project--list">
         <ProjectCard
-          v-for="project in projects"
+          v-for="(project, index) in projects"
           :key="project.slug"
           :project="project"
+          :number="index + 1"
+          :total-projects="projects.length"
         />
       </ul>
     </div>

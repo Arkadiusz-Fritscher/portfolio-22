@@ -6,7 +6,7 @@
         left
         text="Previews"
         :url="prevProject.path"
-        :subtitle="prevProject.title"
+        :subtitle="`0${findProjectNumber - 1} / 0${allProjects.length}`"
       />
     </div>
 
@@ -15,8 +15,8 @@
         v-if="nextProject"
         text="Next"
         :url="nextProject.path"
-        :subtitle="nextProject.title"
-      />
+        :subtitle="`0${findProjectNumber + 1} / 0${allProjects.length}`"
+      ></BaseProjectBrowsButton>
     </div>
   </div>
 </template>
@@ -25,7 +25,8 @@
 export default {
   data() {
     return {
-      projects: Array
+      projects: Array,
+      allProjects: []
     };
   },
 
@@ -36,20 +37,42 @@ export default {
       .fetch();
   },
 
-  //   fetchOnServer: false,
-
   computed: {
     nextProject() {
       return this.projects[1] ? this.projects[1] : false;
     },
     prevProject() {
       return this.projects[0] ? this.projects[0] : false;
+    },
+
+    findProjectNumber() {
+      let currentNumber = 0;
+
+      if (this.allProjects.length > 0) {
+        currentNumber =
+          this.allProjects.findIndex(
+            (project) => project.slug === this.$route.params.slug
+          ) + 1;
+      }
+
+      return currentNumber;
     }
   },
 
   watch: {
     $route() {
       this.$fetch();
+    }
+  },
+
+  beforeMount() {
+    this.getProjects();
+  },
+
+  methods: {
+    async getProjects() {
+      const allProjects = await this.$content().only(['slug']).fetch();
+      this.allProjects = await allProjects;
     }
   }
 };
