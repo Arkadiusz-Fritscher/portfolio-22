@@ -8,7 +8,7 @@ links: { live: 'http://google.com', GitHub: 'http://github.com' }
 thumbnail: 'keila-hotzel-lFmuWU0tv4M-unsplash.jpg'
 ---
 
-<projects-image-with-text img-left image="jasmin-ne-E0XAkKWCsjg-unsplash.jpg">
+<projects-image-with-text sticky img-left image="jasmin-ne-E0XAkKWCsjg-unsplash.jpg">
 Elementum non vestibulum urna consequat etiam commodo tempor et pharetra accumsan consectetur porttitor torquent rutrum eros interdum eu. Ac vestibulum curae accumsan vestibulum morbi sapien dictumst purus consectetur dui neque suspendisse imperdiet ullamcorper risus phasellus vel ullamcorper ipsum dui ad.
 </projects-image-with-text>
 
@@ -20,4 +20,4 @@ Elementum non vestibulum urna consequat etiam commodo tempor et pharetra accumsa
 Imperdiet ullamcorper risus phasellus vel ullamcorper ipsum dui
 </projects-callout>
 
-<projects-project-image image="kin-li-rrLCVqZGNFk-unsplash.jpg" />
+<projects-project-image image="kin-li-rrLCVqZGNFk-unsplash.jpg" full />

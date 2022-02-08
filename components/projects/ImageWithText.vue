@@ -25,6 +25,46 @@ export default {
         ? require(`@/assets/img/projects/${this.$route.params.slug}/${this.image}`)
         : '';
     }
+  },
+
+  mounted() {
+    this.animateImageWithText();
+  },
+
+  methods: {
+    animateImageWithText() {
+      this.$gsap.set('.image-section > img', {
+        autoAlpha: 0
+      });
+
+      this.$gsap.set('.image-section > div', {
+        xPercent: -100
+      });
+
+      const tl = this.$gsap.timeline({
+        defaults: {
+          ease: 'power2.in',
+          duration: 0.6
+        }
+      });
+
+      tl.to('.image-section > div', {
+        xPercent: 0
+      });
+
+      tl.to(
+        '.image-section > img',
+        {
+          autoAlpha: 1,
+          duration: 0
+        },
+        '<'
+      );
+
+      tl.to('.image-section > div', {
+        xPercent: 100
+      });
+    }
   }
 };
 </script>
@@ -41,7 +81,8 @@ export default {
     </div>
 
     <!-- Image section -->
-    <div class="image-section">
+    <div class="image-section relative">
+      <div class="absolute inset-0 z-20 bg-current"></div>
       <img :src="imgUrl" :alt="alt" loading="lazy" />
     </div>
   </div>

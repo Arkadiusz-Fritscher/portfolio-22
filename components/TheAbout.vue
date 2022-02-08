@@ -101,7 +101,7 @@ export default {
 </template>
 
 <style scoped>
-#about {
+section .wrapper {
   padding-bottom: var(--af-space-3-y);
 }
 

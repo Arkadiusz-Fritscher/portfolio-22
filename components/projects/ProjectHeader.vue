@@ -21,29 +21,85 @@ export default {
       type: Object,
       required: true
     }
+  },
+
+  mounted() {
+    this.animateProjectHeader();
+  },
+
+  methods: {
+    animateProjectHeader() {
+      const tl = this.$gsap.timeline({
+        defaults: {
+          duration: 1,
+          ease: 'power4.out'
+        }
+      });
+
+      tl.from('.project--title > h1', {
+        yPercent: 80,
+        duration: 1,
+        delay: 0.2
+        // autoAlpha: 0
+      });
+
+      tl.from(
+        this.$refs.project__date,
+        {
+          yPercent: 100,
+          duration: 0.3,
+          ease: 'power1.out'
+        },
+        '-=0.6'
+      );
+
+      tl.from(
+        this.$gsap.utils.toArray(['.stack', '.services']),
+        {
+          yPercent: 10,
+          autoAlpha: 0,
+          stagger: 0.3,
+          ease: 'power3.out'
+        },
+        '-=0.2'
+      );
+
+      tl.from(
+        '.project--link',
+        {
+          // yPercent: 80,
+          autoAlpha: 0,
+          stagger: 0.2,
+          ease: 'power2.out'
+        },
+        '<'
+      );
+    }
   }
 };
 </script>
 
 <template>
   <header>
-    <div class="pb-6 tablet:pb-10">
+    <div class="pb-6 tablet:pb-20">
       <nuxt-link
         class="link__back flex max-w-fit items-center gap-x-2 text-sm"
         to="/#projects"
       >
         <BaseIconArrowRight class="arrow__icon h-8 w-8 rotate-180" />
-        <span class="link font-serif">Back</span>
+        <span class="link font-serif text-base">Back</span>
       </nuxt-link>
     </div>
 
     <div>
-      <div>
-        <span class="text-sm text-grey-heather">{{ date }}</span>
+      <div class="overflow-hidden">
+        <span ref="project__date" class="block text-sm text-grey-heather">{{
+          date
+        }}</span>
       </div>
 
-      <div class="project--title">
-        <h1 class="font-serif text-2xl">{{ title }}</h1>
+      <div ref="project__title" class="project--title overflow-hidden">
+        <h1 class="font-serif text-2xl leading-snug">{{ title }}</h1>
       </div>
 
       <div class="flex flex-wrap gap-x-4 text-sm">
@@ -76,9 +132,17 @@ export default {
         </div>
 
         <div v-if="links" class="project--links">
-          <ul class="link--list">
-            <li v-for="(url, name) in links" :key="name">
-              <a :href="url" class="project--link">{{ name }}</a>
+          <ul class="link--list flex gap-x-2 tablet:justify-end tablet:gap-x-6">
+            <li
+              v-for="(url, name) in links"
+              :key="name"
+              class="overflow-hidden"
+            >
+              <a
+                :href="url"
+                class="project--link block rounded-full border border-current py-2 px-6 text-sm font-medium text-tristesse tablet:px-10 tablet:py-3"
+                >{{ name }}</a
+              >
             </li>
           </ul>
         </div>
@@ -93,7 +157,7 @@ header {
 }
 
 .project--title {
-  padding-bottom: var(--af-space-2-y);
+  margin-bottom: var(--af-space-2-y);
 }
 
 .stack,
@@ -105,12 +169,11 @@ header {
 }
 
 .list--title {
-  @apply mb-2 flex items-center gap-x-2 text-tristesse;
+  @apply mb-2 flex items-center gap-x-2 font-semibold text-tristesse;
 }
 
 .stack--list,
-.services--list,
-.link--list {
+.services--list {
   @apply flex gap-x-1 text-grey-heather;
 }
 
@@ -120,24 +183,14 @@ header {
   padding-left: 0.125em;
 }
 
-.link--list {
-  @apply gap-x-2 tablet:justify-end;
-}
-
 .project--links {
   flex: 0 0 100%;
   display: block;
 }
 
 .project--link {
-  @apply rounded-full border border-tristesse py-2 px-6 text-tristesse;
-  transition: all 0.3s ease-out;
-  transition-delay: 0.2s;
-}
-
-.project--link:hover {
-  @apply bg-tristesse text-chefs-hat;
-  transition: all 0.4s ease-in;
+  transition: hover 0.3s ease-out;
+  /* transition-delay: 0.2s; */
 }
 
 @media screen(tablet) {
@@ -149,7 +202,13 @@ header {
 
 @media (hover: hover) {
   .link__back:hover .arrow__icon {
-    @apply border-transparent bg-ruddy text-chefs-hat;
+    @apply scale-110 border-transparent bg-ruddy text-chefs-hat;
+    transition: transform 0.3s ease-out;
+    transition-delay: 0.1s;
+  }
+
+  .project--link:hover {
+    @apply bg-tristesse text-chefs-hat;
     transition: all 0.2s ease-in;
   }
 }

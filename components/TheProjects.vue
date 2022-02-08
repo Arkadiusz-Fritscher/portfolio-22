@@ -28,7 +28,7 @@ export default {
     this.pointer = document.querySelector('.cursor');
     this.pointerHoverEvents();
 
-    console.log(this.projects);
+    // console.log(this.projects);
   },
 
   methods: {

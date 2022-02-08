@@ -9,7 +9,10 @@
 
     <!-- Project Title -->
     <div class="project--title pointer-events-none overflow-hidden">
-      <p ref="projectTitle" class="font-serif text-2xl">
+      <p
+        ref="projectTitle"
+        class="font-serif text-2xl font-bold tracking-normal"
+      >
         {{ project.title }}
       </p>
     </div>
@@ -63,7 +66,6 @@ export default {
 
   mounted() {
     this.animateProjectCard();
-    console.log(this.project);
   },
 
   methods: {

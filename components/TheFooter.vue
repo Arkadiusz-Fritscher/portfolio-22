@@ -1,8 +1,9 @@
 <template>
-  <footer class="bg-dark-rift text-chefs-hat">
-    <div id="contact" class="wrapper flex flex-col">
-      <div class="flex justify-end tablet:w-11/12">
-        <div class="space--right justify-end">
+  <footer id="contact" class="bg-dark-rift text-chefs-hat">
+    <div class="wrapper flex flex-col">
+      <div class="ml-auto flex justify-end tablet:w-11/12">
+        <div class="space--right flex items-start gap-x-[2%]">
+          <BaseIconStar class="star__icon" />
           <p class="max-w-[34ch] text-base">
             Ich bin offen für Jobangebote, Praktika, kleinere Nebenprojekte,
             peer programming oder auch Kontakte zum Netzwerken.
@@ -56,6 +57,11 @@ export default {};
   width: var(--size);
   height: var(--size);
   margin-left: calc(var(--af-text-contact) * 0.2);
+}
+
+.star__icon {
+  width: calc(var(--af-text-base) * 1.4);
+  min-width: calc(var(--af-text-base) * 1.4);
 }
 
 nav {

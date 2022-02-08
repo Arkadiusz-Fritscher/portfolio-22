@@ -55,7 +55,7 @@ nav {
   bottom: calc(var(--nav-gutter) - 3px);
   left: calc(var(--nav-gutter) - 1px);
   right: calc(var(--nav-gutter) - 1px);
-  height: 0.0625rem;
+  height: 0.063rem;
   transform: scaleX(0);
   transform-origin: right center;
   background-color: currentColor;
@@ -66,18 +66,6 @@ nav {
   transform: scaleX(1);
   transition-delay: 0.2s;
   transform-origin: left center;
-
-  /* content: '';
-  display: block;
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  right: 0;
-  height: 0.0625rem;
-  transform: scaleX(0);
-  transform-origin: left center;
-  background-color: currentColor;
-  transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1); */
 }
 
 .link--active::after {
@@ -87,16 +75,28 @@ nav {
   bottom: calc(var(--nav-gutter) - 3px);
   left: calc(var(--nav-gutter) - 1px);
   right: calc(var(--nav-gutter) - 1px);
-  height: 0.0625rem;
-  transform: scaleX(1);
+  height: 0.063rem;
+  transform: scaleX(0);
   transform-origin: left center;
   background-color: currentColor;
   transition-delay: 0.2s;
   transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+  animation: slideIn 0.2s ease-out;
+  /* animation-direction: alternate; */
+  animation-fill-mode: both;
 }
 
 .link--active:hover::after {
   transform: scaleX(0);
   transform-origin: right center;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
 }
 </style>
